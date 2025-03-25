@@ -8061,6 +8061,20 @@ Wget Config:
   tm_scope: source.wgetrc
   ace_mode: text
   language_id: 668457123
+Whee:
+  type: programming
+  color: "#0000FF"  # Blue
+  extensions:
+    - ".whee"
+    - ".wheep"
+    - ".wyml"
+  interpreters:
+    - whee
+  tm_scope: source.whee
+  ace_mode: text
+  filenames:
+    - "WheeScript"
+  group: Whee
 Whiley:
   type: programming
   color: "#d5c397"
