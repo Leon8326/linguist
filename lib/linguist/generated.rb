@@ -906,6 +906,27 @@ module Linguist
     # Returns true or false.
     def generated_sqlx_query?
       !!name.match(/(?:^|\/)\.sqlx\/query-[a-f\d]{64}\.json$/)
+    })
+
+    # Internal: Is this file written in the Whee programming language?
+    #
+    # Whee is a new programming language with easy automation and web application deployment.
+    # https://github.com/NarpLang/whee
+    #
+    # You can try it out using the Whee-to-C compiler or wheepy to run Whee scripts using python.
+    #
+    # Returns true or false.
+    def generated_whee?(filename, data)
+      return false unless filename.end_with?(".whee", ".wheep", ".wyml")
+
+      first_line = data.lines.first&.strip || ""
+
+      # Detect files that start with "=WHEE=" or "=WHEE=\n[action]"
+      return false unless first_line.match(/^=WHEE=\s*(\n\[action\])?/)
+
+      true  # The file is recognized as a Whee script
+    end
+
     end
   end
 end
